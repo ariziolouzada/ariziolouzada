@@ -1,0 +1,169 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="espacobeleza.master.cs" Inherits="ariziolouzada.espacodebeleza.espacobeleza" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <title>Espaço de Beleza - Administração.</title>
+
+    <link href="<%= ResolveUrl("css/bootstrap.min.css") %>" rel="stylesheet">
+    <link href="<%= ResolveUrl("font-awesome/css/font-awesome.css") %>" rel="stylesheet">
+
+    <link href="<%= ResolveUrl("css/animate.css") %>" rel="stylesheet">
+    <link href="<%= ResolveUrl("css/style.css") %>" rel="stylesheet">
+
+    
+    <link id="Link1" rel="shortcut icon" href="<%= ResolveUrl("imagens/female-hair-shape-and-face-silhouetteIcone.png") %>" type="image/x-icon" />
+    <link id="Link2" rel="icon" href="<%= ResolveUrl("imagens/female-hair-shape-and-face-silhouetteIcone.png") %>" type="image/ico" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <asp:Literal ID="ltlImgUser" runat="server"></asp:Literal>
+                                <%--<img alt="image" class="img-circle" src="imagens/usuario/profile.jpg" width="150" />
+                                <img alt="image" class="img-circle" src="../../img/avatar2.jpg" />--%>
+                               
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs"><strong class="font-bold">
+                                        <asp:Label ID="lblNomeUser" runat="server" Text="Login"></asp:Label>
+                                    </strong></span>
+                                    <span class="text-muted text-xs block">Editar<b class="caret"></b></span>
+                                </span>
+
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="<%= ResolveUrl("sistema/alterarsenha.aspx") %>">Alterar Senha</a></li>
+                                <%--<li><a href="#">Contacts</a></li>
+                                <li><a href="#">Mailbox</a></li>--%>
+                                <li class="divider"></li>
+                                <li><a href="<%= ResolveUrl("~/espacodebeleza/logout.aspx") %>">Sair</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            Espaço de Beleza
+                        </div>
+                    </li>
+                    <li>
+                        <a href="<%= ResolveUrl("~/espacodebeleza") %>"><i class="fa fa-home"></i><span class="nav-label">Home</span></a>
+                    </li>
+
+                   <%-- <li runat="server" id="menuAgenda">
+                        <a href="javascript:;"><i class="fa fa-calendar"></i><span class="nav-label">Agenda</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li runat="server" id="menuAgendaMinhaAgda"><a href="<%= ResolveUrl("../espacodebeleza/agenda") %>">Agenda</a></li>
+                            <li runat="server" id="menuAgendaWeb"><a href="<%= ResolveUrl("../espacodebeleza/agenda/minhaagenda") %>">Agenda Web</a></li>
+                        </ul>
+                    </li>--%>
+
+                    <li  runat="server" id="menuAgenda">
+                        <a href="<%= ResolveUrl("../espacodebeleza/pages/agenda") %>"><i class="fa fa-calendar"></i><span class="nav-label">Agenda</span></a>
+                    </li>
+                    <li  runat="server" id="menuCliente">
+                        <a href="<%= ResolveUrl("../espacodebeleza/pages/cliente") %>"><i class="fa fa-female"></i><span class="nav-label">Clientes</span></a>
+                    </li>
+                    <li runat="server" id="menuProfissional">
+                        <a href="<%= ResolveUrl("../espacodebeleza/pages/profissional") %>"><i class="fa fa-ruble"></i><span class="nav-label">Profissionais</span></a>
+                    </li>
+                    <li runat="server" id="menuColaborador">
+                        <a href="<%= ResolveUrl("../espacodebeleza/pages/colaborador") %>"><i class="fa fa-user"></i><span class="nav-label">Colaborador</span></a>
+                    </li>
+                    <li runat="server" id="menuServico">
+                        <a href="<%= ResolveUrl("../espacodebeleza/pages/servico") %>"><i class="fa fa-cog"></i><span class="nav-label">Serviços</span></a>
+                    </li>
+                    <li runat="server" id="menuProduto">
+                        <a href="<%= ResolveUrl("../espacodebeleza/pages/produto") %>"><i class="fa fa-paypal"></i><span class="nav-label">Produtos</span></a>
+                    </li>                     
+                    <%--<li runat="server" id="menuUsuario">
+                        <a href="<%= ResolveUrl("../espacodebeleza/pages/usuario") %>"><i class="fa fa-user"></i><span class="nav-label">Usuários</span></a>
+                    </li>--%>
+                   
+                    <li runat="server" id="menuComanda">
+                        <a href="<%= ResolveUrl("../espacodebeleza/pages/comanda") %>"><i class="fa fa-trello"></i><span class="nav-label">Comanda</span></a>
+                    </li>
+
+                    <li runat="server" id="menuFinanceiro">
+                        <a href="javascript:;"><i class="fa fa-money"></i><span class="nav-label">Financeiro</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li runat="server" id="menuFinancEntradaDiaria"><a href="<%= ResolveUrl("../espacodebeleza/pages/financeiro/entradadiaria.aspx") %>">Entrada Diária</a></li>
+                            <li runat="server" id="menuFinancEntradaPeriodo"><a href="<%= ResolveUrl("../espacodebeleza/pages/financeiro/entradaperiodo.aspx") %>">Entrada Período</a></li>
+                            
+                            <%--<li runat="server" id="menuFinancCaixa"><a href="<%= ResolveUrl("../espacodebeleza/pages/financeiro/caixa") %>">Caixa</a></li>
+                            <li runat="server" id="menuFinancFechamto"><a href="<%= ResolveUrl("../espacodebeleza/pages/financeiro/fechamentodiario") %>">Fechamento Diário</a></li>
+                            <li runat="server" id="menuFinancTipoSaida"><a href="<%= ResolveUrl("../espacodebeleza/pages/financeiro/saida") %>">Tipo Saída</a></li>
+                        --%>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i></a>
+
+                    </div>
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">.</span>
+                        </li>
+                        <li>
+                            <a href="<%= ResolveUrl("../espacodebeleza/logout.aspx") %>">
+                                <i class="fa fa-sign-out"></i>Sair
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="wrapper wrapper-content">
+                        <asp:ContentPlaceHolder ID="Conteudo" runat="server">
+                            <form id="form1" runat="server">
+                            </form>
+                        </asp:ContentPlaceHolder>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="<%= ResolveUrl("js/jquery-2.1.1.js") %>"></script>
+    <script src="<%= ResolveUrl("js/bootstrap.min.js") %>"></script>
+    <script src="<%= ResolveUrl("js/plugins/metisMenu/jquery.metisMenu.js") %>"></script>
+    <script src="<%= ResolveUrl("js/plugins/slimscroll/jquery.slimscroll.min.js") %>"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="<%= ResolveUrl("js/inspinia.js") %>"></script>
+    <script src="<%= ResolveUrl("js/plugins/pace/pace.min.js") %>"></script>
+
+    <!-- jQuery UI -->
+    <script src="<%= ResolveUrl("js/plugins/jquery-ui/jquery-ui.min.js") %>"></script>
+
+    <asp:ContentPlaceHolder ID="Scripts" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>
