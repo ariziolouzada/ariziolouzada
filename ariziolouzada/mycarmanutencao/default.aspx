@@ -46,15 +46,13 @@
                                 <div class="container-fluid">
                                     <!-- Info boxes -->
                                     <div class="row">
-                                        <div class="col-12 col-sm-6 col-md-3">
-                                            <div class="info-box">
-                                                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
-
+                                        <div class="col-12 col-sm-6 col-md-4">
+                                            <div class="info-box mb-4">
+                                                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
                                                 <div class="info-box-content">
-                                                    <span class="info-box-text">CPU Traffic</span>
-                                                    <span class="info-box-number">10
-                 
-                                            <small>%</small>
+                                                    <span class="info-box-text">Valor de Compra</span>
+                                                    <span class="info-box-number">
+                                                        <asp:Label ID="lblValorCompra" runat="server" Text="R$0,00"></asp:Label>
                                                     </span>
                                                 </div>
                                                 <!-- /.info-box-content -->
@@ -62,13 +60,31 @@
                                             <!-- /.info-box -->
                                         </div>
                                         <!-- /.col -->
-                                        <div class="col-12 col-sm-6 col-md-3">
-                                            <div class="info-box mb-3">
-                                                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+                                        <div class="col-12 col-sm-6 col-md-4">
+                                            <div class="info-box">
+                                                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
                                                 <div class="info-box-content">
-                                                    <span class="info-box-text">Likes</span>
-                                                    <span class="info-box-number">41,410</span>
+                                                    <span class="info-box-text">Gasto Manutenção</span>
+                                                    <span class="info-box-number">
+                                                        <asp:Label ID="lblGastoManutencao" runat="server" Text="R$0,00"></asp:Label>
+                                            <%--<small>%</small>--%>
+                                                    </span>
+                                                </div>
+                                                <!-- /.info-box-content -->
+                                            </div>
+                                            <!-- /.info-box -->
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-12 col-sm-6 col-md-4">
+                                            <div class="info-box mb-4">
+                                                <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+
+                                                <div class="info-box-content">
+                                                    <span class="info-box-text">Tempo de Propriedade</span>
+                                                    <span class="info-box-number">
+                                                        <asp:Label ID="lblTempoPropriedade" runat="server" Text="0"></asp:Label>
+                                                    </span>
                                                 </div>
                                                 <!-- /.info-box-content -->
                                             </div>
@@ -76,22 +92,9 @@
                                         </div>
                                         <!-- /.col -->
 
-                                        <!-- fix for small devices only -->
+<%--                                        <!-- fix for small devices only -->
                                         <div class="clearfix hidden-md-up"></div>
 
-                                        <div class="col-12 col-sm-6 col-md-3">
-                                            <div class="info-box mb-3">
-                                                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text">Sales</span>
-                                                    <span class="info-box-number">760</span>
-                                                </div>
-                                                <!-- /.info-box-content -->
-                                            </div>
-                                            <!-- /.info-box -->
-                                        </div>
-                                        <!-- /.col -->
                                         <div class="col-12 col-sm-6 col-md-3">
                                             <div class="info-box mb-3">
                                                 <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
@@ -104,7 +107,8 @@
                                             </div>
                                             <!-- /.info-box -->
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- /.col -->--%>
+
                                     </div>
                                     <!-- /.row -->
 
@@ -112,13 +116,13 @@
                                         <div class="col-md-12">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h5 class="card-title">Monthly Recap Report</h5>
+                                                    <h5 class="card-title">Detalhamento das Manutenções</h5>
 
                                                     <div class="card-tools">
                                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                             <i class="fas fa-minus"></i>
                                                         </button>
-                                                        <div class="btn-group">
+                                                       <%-- <div class="btn-group">
                                                             <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
                                                                 <i class="fas fa-wrench"></i>
                                                             </button>
@@ -132,7 +136,7 @@
                                                         </div>
                                                         <button type="button" class="btn btn-tool" data-card-widget="remove">
                                                             <i class="fas fa-times"></i>
-                                                        </button>
+                                                        </button>--%>
                                                     </div>
                                                 </div>
                                                 <!-- /.card-header -->
@@ -203,9 +207,13 @@
                                                     <div class="row">
                                                         <div class="col-sm-3 col-6">
                                                             <div class="description-block border-right">
-                                                                <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>17%</span>
-                                                                <h5 class="description-header">$35,210.43</h5>
-                                                                <span class="description-text">TOTAL REVENUE</span>
+                                                                <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
+                                                                    <asp:Label ID="lblPorcentagemVenda" runat="server" Text="0%"></asp:Label>
+                                                                    </span>
+                                                                <h5 class="description-header">
+                                                                    <asp:Label ID="lblValorVenda" runat="server" Text="R$0,00"></asp:Label>
+                                                                </h5>
+                                                                <span class="description-text">VALOR DA VENDA</span>
                                                             </div>
                                                             <!-- /.description-block -->
                                                         </div>
@@ -271,5 +279,6 @@
     
     <!-- ChartJS -->
     <script src="<%= ResolveUrl("plugins/chart.js/Chart.min.js")%>"></script>
+    <script src="<%= ResolveUrl("dist/js/pages/dashboard2.js")%>"></script>
 
 </asp:Content>

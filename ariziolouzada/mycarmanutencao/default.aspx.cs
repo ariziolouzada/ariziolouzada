@@ -23,8 +23,21 @@ namespace ariziolouzada.mycarmanutencao
             var carro = MyCar.Pesquisar(int.Parse(idMyCar));
             if (carro != null)
             {
-                var periodo = new CalculaDiferencaDatas(carro.DataCompra, carro.DataVenda);
+                var dataVenda = carro.DataVenda != null ? carro.DataVenda : DateTime.Now;
+                var periodo = new CalculaDiferencaDatas(carro.DataCompra, dataVenda);
+                var valorManutencao = MyCarManutencao.SomaValor(carro.Id);
 
+                lblValorCompra.Text = string.Format("{0:C}", carro.ValorCompra);
+                lblGastoManutencao.Text = string.Format("{0:C}", valorManutencao);
+                lblTempoPropriedade.Text = string.Format("{0} ano(s) {1} mes(es) dia(s) {2}", periodo.Anos, periodo.Meses, periodo.Dias );
+            
+                lblValorVenda.Text = string.Format("{0:C}", carro.ValorVenda);
+                decimal porcentagemVenda = 0;
+                if (carro.ValorVenda > 0)
+                {
+                    porcentagemVenda = (carro.ValorVenda / carro.ValorCompra) * 100;
+                }
+                lblPorcentagemVenda.Text = string.Format("{0}%", string.Format("{0:#.##}", porcentagemVenda));
             }
         }
 
@@ -48,7 +61,7 @@ namespace ariziolouzada.mycarmanutencao
 
         protected void ddlCarro_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            CarregaDadosCarro();
         }
     }
 }

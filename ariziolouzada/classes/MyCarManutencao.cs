@@ -183,7 +183,7 @@ namespace ariziolouzada.classes
                 var reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    soma = Convert.ToDecimal(reader["soma_valor"]);
+                    soma = reader["soma_valor"] != DBNull.Value ? Convert.ToDecimal(reader["soma_valor"]) : 0;
                 }
             }
             return soma;
