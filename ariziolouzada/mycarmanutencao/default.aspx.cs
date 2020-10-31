@@ -23,7 +23,7 @@ namespace ariziolouzada.mycarmanutencao
             var carro = MyCar.Pesquisar(int.Parse(idMyCar));
             if (carro != null)
             {
-                var dataVenda = carro.DataVenda != null ? carro.DataVenda : DateTime.Now;
+                var dataVenda = carro.DataVenda != DateTime.MinValue ? carro.DataVenda : DateTime.Now;
                 var periodo = new CalculaDiferencaDatas(carro.DataCompra, dataVenda);
                 var valorManutencao = MyCarManutencao.SomaValor(carro.Id);
 

@@ -78,7 +78,7 @@
                                         <!-- /.col -->
                                         <div class="col-12 col-sm-6 col-md-4">
                                             <div class="info-box mb-4">
-                                                <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                                                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-clock" aria-hidden="true"></i></span>
 
                                                 <div class="info-box-content">
                                                     <span class="info-box-text">Tempo de Propriedade</span>
